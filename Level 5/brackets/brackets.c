@@ -31,18 +31,11 @@ static int brackets(char *str)
     while (str[i] != '\0')
     {
         if (str[i] == '{' || str[i] == '[' || str[i] == '(')
-        {   
-            printf("top - %d\n", top);
             stack[++top] = str[i];
-            printf("top - %d\n", top);
-        }
         if (str[i] == '}' || str[i] == ']' || str[i] == ')')
-            if (!check(stack[top--], str[i]))
-            {
-                printf("top - %d\n", top);
+            if (check(stack[top--], str[i]) == 0)
                 return(0);
-            }
-        i += 1;
+        i++;
     }
     if (top != 0)
         return (0);
